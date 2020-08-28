@@ -1,0 +1,93 @@
+
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    double r1, r2, i1, i2, r, i;
+    //taking real and imaginary parts of a complex number from user as inputs
+    printf("++ Enter Complex Number-1 ++\n");
+    printf("\t-- real part: ");
+    scanf("%lf", &r1);
+    printf("\t-- Imaginary Part:");
+    scanf("%lf", &i1);
+    printf("++ Enter Complex Number-2 ++\n");
+    printf("\t-- Real Part:");
+    scanf("%lf", &r2);
+    printf("\t-- Imaginary Part:");
+    scanf("%lf", &i2);
+    
+    //printing the two complex number in (a+bi) format
+    printf("\n** Complex Number-1: C1 = (%lf) + (%lf)i", r1, i1);
+    printf("\n** Complex Number-2: C2 = (%lf) + (%lf)i", r2, i2);
+    
+    // computing the modulus of the two complex number
+    printf("\n** Modulus of Complex Number-1: |C1| = %lf", sqrt(r1*r1 + i1*i1));
+    printf("\n** Modulus of Complex Number-2: |C2| = %lf", sqrt(r2*r2 + i2*i2));
+    
+    // computing the conjugate of the two complex number */
+    printf("\n** Conjugate of Complex Number-1: ~C1 = (%lf) + (%lf)i", r1, -i1);
+    printf("\n** Congugate of Complex Number-2: ~C2 = (%lf) + (%lf)i", r2, -i2);
+    
+    // computing the arguement of two complex number
+    printf("\n** Argument of Complex Number-1: arg(C1) = %lf", atan(i1/r1));
+    printf("\n** Argument of Complex Number-2: arg(C2) = %lf", atan(i2/r2));
+    
+    // adding two complex numbers
+    r = (r1+r2); i = (i1+i2);
+    printf("\n** Complex Number After Addition: (C1 + C2) = (%lf) + (%lf)i", r,i);
+    
+    // subtracting two complex numbers
+    r = (r1-r2); i = (i1-i2);
+    printf("\n** Complex Number After Subtracting: (C1 - C2) = (%lf) + (%lf)i", r,i);
+    
+    // multiplying two complex number
+    r = (r1*r1 - i1*i2); i = (r1*i2 + r2*i1);
+    printf("\n** Complex Number After multiplying: (C1 * C2) = (%lf) + (%lf)i", r,i);
+    
+    // dividing two complex number */
+    r = (r1*r2 + i1*i2)/(r2*r2 + i2*i2); i = (r2*i1 - r1*i2)/(r2*r2 + i2*i2);
+    printf("\n** Complex Number after DIVISION: (C1 / C2) = (%lf) + (%lf)i", r,i);
+    
+    // computing the square of two complex numbers
+    r = (r1*r1 - i1*i1); i = (2*r1*i1);
+    printf("\n** Square of Complex Number-1: C1^2 =(%lf) + (%lf)i", r,i);
+    r = (r2*r2 - i2*i2); i = (2*r2*i2);
+    printf("\n** Square of Complex Number-2: C2^2 =(%lf) + (%lf)i", r,i);
+    
+    // computing the cube of two complex number
+    r = (r1*r1*r1 - i1*i1*r1); i = (2*r1*i1*i1);
+    printf("\n** cube of Complex Number-1: C1^3 =(%lf) + (%lf)i", r,i);
+    r = (r2*r2*r2 - i2*i2*r2); i = (2*r2*i2*i2);
+    printf("\n** cube of Complex Number-2: C2^3 =(%lf) + (%lf)i", r,i);
+    
+    // computing the square-roots of the two complex number
+    r = sqrt((r1 +sqrt(r1*r1 + i1*i1))/2); i = ((i1>0)-(i1<0))*sqrt((-r1+sqrt(r1*r1 +i1+i1))/2);
+    printf("\n** square-roots of Complex Number-1: C1^0.5 =(%lf) + (%lf)i", r,i);
+    r = sqrt((r2 +sqrt(r2*r2 + i2*i2))/2); i = ((i2>0)-(i2<0))*sqrt((-r2+sqrt(r2*r2 +i2+i2))/2);
+    printf("\n** square-roots of Complex Number-1: C2^0.5 =(%lf) + (%lf)i", r,i);
+    
+    // computing the reciprocals of two complex numbers
+    r = r1/(r1*r1 + i1*i1); i = -i1/(r1*r1 + i1*i1);
+    printf("\n** Reciprocal of Complex Number-1: 1/C1 =(%lf) + (%lf)i", r,i);
+    r = r2/(r2*r2 + i2*i2); i = -i2/(r2*r2 + i2*i2);
+    printf("\n** Reciprocal of Complex Number-2: 1/C2 =(%lf) + (%lf)i", r,i);
+    
+    // computing the exponentiation of two complex number
+    r = exp(r1)*cos(i1); i = exp(r1)*sin(i1);
+    printf("\n** exponentiation of Complex Number-1: e^C1 =(%lf) + (%lf)i", r,i);
+    r = exp(r2)*cos(i2); i = exp(r2)*sin(i2);
+    printf("\n** exponentiation of Complex Number-2: e^C2 =(%lf) + (%lf)i", r,i);
+    
+    return (0);
+    
+}
+    
+    
+    
+    
+    
+    
+    
+    
+    
