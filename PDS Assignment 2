@@ -1,0 +1,191 @@
+#include <stdio.h>
+int main()
+{
+    int roll, atd, marks, bl, type, errorFlag = 0;
+    //initialized with initialized cutoff
+    int exCut = 90, aCut = 80, bCut = 70, cCut = 60, dCut = 50, pCut = 40;
+    
+    //enter student roll number and attendance
+    printf("Enter student Roll Number: ");
+    scanf("%d", &roll);
+    printf("\nEnter the Attendate Percentage");
+    scanf("%d", &atd);
+    
+    //attendance verification
+    if( atd < 0 || atd > 100)
+        printf("\nError: Mistake in attendance record");
+    else if(atd < 80)
+        printf("\nThe Grade of %d is : F (Shortage of attendance!)", roll);
+    else
+    {
+        //attendance between [80-100]
+        printf("\nEnter the subject marks (out of 100) :");
+        scanf("%d",&marks);
+        if(marks > 100)
+            printf("\nError: Mistake is marks record.");
+        else
+        {
+            //Marks are in range
+            printf("\nIf this marks for Supplementary / Backlog Examination? (Type '0' if NOT) ");
+            scanf("%d", &bl);
+            printf("\nDo you want Relative Grading ? (Type '0' if Not)");
+            scanf("%d", &type);
+            if(type)
+            {
+                printf("\nSet paramenter for relative grading.");
+                printf("\nCutt Off for 'EX' : ");
+                scanf("%d", &exCut);
+                printf("\nCutt Off for 'A' : ");
+                scanf("%d", &aCut);
+                printf("\nCutt Off for 'B' : ");
+                scanf("%d", &bCut);
+                printf("\nCutt Off for 'C' : ");
+                scanf("%d", &cCut);
+                printf("\nCutt Off for 'D' : ");
+                scanf("%d", &dCut);
+                printf("\nCutt Off for 'P' : ");
+                scanf("%d", &pCut);
+                //checking relative entries
+                if(exCut > 100)
+                {
+                    printf("/nError: Wrong Relative Cut Off.");
+                    errorFlag = 1;
+                }
+                if(aCut >= exCut)
+                {
+                    printf("/nError: Wrong Relative Cut Off.");
+                    errorFlag = 1;
+                }
+                if(bCut >= aCut)
+                {
+                    printf("/nError: Wrong Relative Cut Off.");
+                    errorFlag = 1;
+                }
+                if(cCut >= bCut)
+                {
+                    printf("/nError: Wrong Relative Cut Off.");
+                    errorFlag = 1;
+                }
+                if(dCut >= cCut)
+                {
+                    printf("/nError: Wrong Relative Cut Off.");
+                    errorFlag = 1;
+                }
+                if(pCut >= dCut)
+                {
+                    printf("/nError: Wrong Relative Cut Off.");
+                    errorFlag = 1;
+                }
+                if(pCut < 0)
+                {
+                    printf("/nError: Wrong Relative Cut Off.");
+                    errorFlag = 1;
+                }
+                
+            }
+            
+            //printing marks
+            if(!errorFlag)
+            {
+                printf("\nThe Subject Marks of %d is : ", roll);
+                if(marks == 100)
+                    printf("Hundread");
+                else if(marks == 0)
+                    printf(" Zero");
+                else if(marks/10 ==1)
+                {
+                    switch(marks%10)
+                    {
+                        case 0: printf("Ten");
+                        break;
+                        case 1: printf("Eleven");
+                        break;
+                        case 2: printf("Twelve");
+                        break;
+                        case 3: printf("Thirteen");
+                        break;
+                        case 4: printf("Fourteen");
+                        break;
+                        case 5: printf("Fifteen");
+                        break;
+                        case 6: printf("Sixteen");
+                        break;
+                        case 7: printf("Seventeen");
+                        break;
+                        case 8: printf("Eighteen");
+                        break;
+                        case 9: printf("Nineteen");
+                        break;
+                        
+                    }
+                }
+                else
+                {
+                    switch(marks/10)
+                    {
+                        case 2: printf("Twenty");
+                        break;
+                        case 3: printf("Thirty");
+                        break;
+                        case 4: printf("Fourty");
+                        break;
+                        case 5: printf("Fifty");
+                        break;
+                        case 6: printf("Sixty");
+                        break;
+                        case 7: printf("Seventy");
+                        break;
+                        case 8: printf("Eighty");
+                        break;
+                        case 9: printf("Ninety");
+                        break;
+                    }
+                    switch(marks%10)
+                    {
+                        case 0: printf("\b");
+                        break;
+                        case 1: printf("One");
+                        break;
+                        case 2: printf("Two");
+                        break;
+                        case 3: printf("Three");
+                        break;
+                        case 4: printf("Four");
+                        break;
+                        case 5: printf("Five");
+                        break;
+                        case 6: printf("Six");
+                        break;
+                        case 7: printf("Seven");
+                        break;
+                        case 8: printf("Eight");
+                        break;
+                        case 9: printf("Nine");
+                        break;
+                    }
+                }
+                if(!type)
+                    printf("\n The Absolute Grading of %d is :", roll);
+                else
+                    printf("\n The Relative Grading of %d is :", roll);
+                if( marks >= exCut)
+                    (!bl)? printf("Ex\n") : printf("A\n");
+                else if( marks >= aCut)
+                    (!bl)? printf("A\n") : printf("B\n");
+                else if( marks >= bCut)
+                    (!bl)? printf("B\n") : printf("C\n");
+                else if( marks >= cCut)
+                    (!bl)? printf("C\n") : printf("D\n");
+                else if( marks >= dCut)
+                    (!bl)? printf("D\n") : printf("P\n");
+                else if( marks >= pCut)
+                    (!bl)? printf("P\n") : printf("F\n");
+                else
+                    printf("F\n");
+                    
+                
+            }
+        }
+    }
+    return (0);
+}
