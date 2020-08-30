@@ -1,0 +1,66 @@
+#include <stdio.h>
+int main()
+{
+    unsigned int n, d, b,result, i, j, k, convResult, tempresult;
+    
+    //take required input from user
+    printf("Enter the Multipication Table Entries: ");
+    scanf("%u", &n);
+    printf("\nEnter the Multipication Depth: ");
+    scanf("%u", &d);
+    printf("\nEnter the base value: ");
+    scanf("%u", &b);
+    
+    //creating multipication table by mulltipication
+    printf("\nThe Multipication Approach\n");
+    for(i=1;i<=n;i++)
+    {
+        printf("[%6d] ==>",i);
+        for(j=1;j<=d;j++)
+        {
+            result = i*j;
+            convResult = 0;
+            k = 1;
+            while(result > 0)
+            {
+                convResult = convResult + k * (result % b);
+                result = result / b;
+                k = 10 * k;
+            }
+            printf("%8d", convResult);
+            printf("    ");
+            
+            
+        }
+        printf("\n");
+        
+    }
+    //creating multipication table addition
+    printf("\nThe Addition Approach\n");
+    for(i=1;i<=n;i++)
+    {
+        printf("[%6d] ==>",i);
+        tempresult = 0;
+        for(j=1;j<=d;j++)
+        {
+            tempresult = tempresult + i ;
+            result = tempresult;
+            convResult = 0;
+            k = 1;
+            while(result > 0)
+            {
+                convResult = convResult + k * (result % b);
+                result = result / b;
+                k = 10 * k;
+            }
+            printf("%8d", convResult);
+            printf("    ");
+            
+            
+        }
+        printf("\n");
+    }
+    return (0);
+        
+    
+}
