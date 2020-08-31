@@ -1,0 +1,57 @@
+#include <stdio.h>
+int main()
+{
+    int n ,i,j,temp,k,x,t;
+    k=0;t=0;x=0;
+    printf("Enter the number of Daisy Flower: ");
+    scanf("%d", &n);
+    int a[20];
+    printf("\nEnter the number of Petals in each of %d flowers.\n", n);
+    for(i=0;i<n;i++)
+    scanf("%d",&a[i]);
+    for(i=0;i<n-1;i++)
+    {
+        for(j=i+1;j<n;j++)
+        {
+            if(a[i]>a[j])
+            {
+                temp = a[i];
+                a[i] = a[j];
+                a[j] = temp;
+            }
+        }
+    }
+    for(i=0;i<n;i++)
+    printf("%d   ",a[i]);
+    for(i=0;i<n;i++)
+    { 
+        printf("\niu = %d" , i);
+        printf("\nThe Number of iteration %d", ++x);
+        k=0;
+        for(j=i+1;j<n;j++)
+        {
+            if(a[i]==a[j])
+            {
+             k=k+1;
+             printf("\nk = %d",k);
+            }
+            else
+            break;
+            
+        }
+        i = i+k;
+        printf("\nThe flowers with minimum petals : %d", k+1);
+        printf("\nPetal Numbers of Remaining Daisy Flowers : ");
+        for(t=i+1;t<n;t++)
+        {
+            a[t]=a[t] - a[i];
+            printf("%d  ", a[t]);
+        }
+        if(i+1 == n)
+        printf("NULL");
+        printf("\nid = %d" , i);
+        
+    }
+    
+    
+}
