@@ -1,0 +1,63 @@
+#include <stdio.h>
+int main()
+{
+    int w, a[20],i,j,k;
+    printf("Enter Total Width of the Cityscape: ");
+    scanf("%d",&w);
+    printf("\nEnter 10 Positive Height for Elevation Map:");
+    for(i=0;i<w;i++)
+    scanf("%d",&a[i]);
+    //find max number
+    int max = a[0];
+    for(i=0;i<w;i++)
+    {
+        if(a[i]>max)
+        {
+            max = a[i];
+            k = i;
+        }
+    }
+    printf("\n******The Elevation Map*****");
+    printf("\n--------------------------------------------------\n");
+    for(i=max;i>0;i--)
+    {
+        for(j=0;j<w;j++)
+        {
+            if((a[j]>= i)&(a[j] != 0))
+            {
+                printf("|H|");
+                printf("    ");   
+            }
+            if(a[j] == 0)
+            {
+                printf("   ");
+                printf("    ");
+            }
+        }
+        printf("\n");
+    }
+    printf("--------------------------------------------------\n");
+    for(i=0;i<w;i++)
+    printf(" %d     ",a[i]);
+    
+    //The trapped water
+    int marea, area1, t, tmax, x;
+    marea = 0;
+    area1 = 0;
+    i =k+1;
+    tmax = a[i];
+    while(i<w-1)
+    {   
+        for(j=k+1;j<w;j++)
+        if(a[j] > tmax )
+        {
+            tmax = a[j];
+            t = j;
+        }
+        for(x=i+1;((x<t)&(x<w));x++)
+        marea = marea + a[x];
+        area1 = area1 + (tmax*(t-i-1)-marea);
+        i=t+1;
+    }   
+    
+}
