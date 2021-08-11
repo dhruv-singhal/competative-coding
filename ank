@@ -1,70 +1,70 @@
-unordered_map<int, string> mp;
-
-bool checkR(string &res, vector<int> &t)
+bool rec(string &ans, vector<int>&f)
 {
-    int fl1=0;
-    for(int i=0;i<26;i++)
+    int fl =0;
+    for(int i =0;i<26;i++)
     {
-        if(t[i]>0){
-            fl1=1;
+        if(f[i]>0)
+        {
+            fl=1;
             break;
         }
     }
-    if(fl1==0)
+    if(fl==0)
     {
         return true;
-    } 
-    else {
-        bool curr=false;
-        for(int j=9;j>=0;j--)
+    }
+    else
+    {
+        bool ans =false;
+        for(int j =9;j>=0;j--)
         {
-            int fl2=0;
-            for(int k=0;k<mp[j].size();k++)
+            int fl2 =0;
+            for(int k =0; k<mp[j].size();k++)
             {
-                if(t[mp[j][k]-'a']>=1) {
-                   continue;
-                }else {
+                if(f[mp[j][k]-'a']>=1)
+                {
+                    continue;
+                }else
+                {
                     fl2=1;
                     break;
                 }
             }
             if(fl2==0)
             {
-                for(int k=0;k<mp[j].size();k++)
+                for(int k =0; k<mp[j].size();k++)
                 {
-                    if(t[mp[j][k]-'a']>=1)
+                    if(f[mp[j][k]-'a']>=1)
                     {
-                        t[mp[j][k]-'a']--;
+                        f[mp[j][k]-'a']--;
                     }
                 }
-                res.push_back(j+'0');
-                if(checkR(res,t)==true)
+                ans.push_back(j+'0');
+                if(rec(ans,f)==true)
                 {
-                    curr=true;
+                    ans =true;
                     break;
-                }
-                else {
-                    res.pop_back();
-                    for(int k=0;k<mp[j].size();k++)
+                }else
+                {
+                    ans.pop_back();
+                    for(int k =0; k<mp[j].size();k++)
                     {
-                        t[mp[j][k]-'a']++;
+                        
+                        f[mp[j][k]-'a']++;
+                        
                     }
                 }
             }
         }
-        return curr;
+        return ans;
     }
     
 }
-
-
-string derive_phone_number(string input_string) {
-    
-    string s=input_string;
-    int n=s.size();
-    
+string derive_phone_number(string input_string)
+{
+    string s =input_string;
+    int n =s.size();
     mp.clear();
-    
     mp[0]="zero";
     mp[1]="one";
     mp[2]="two";
@@ -75,22 +75,20 @@ string derive_phone_number(string input_string) {
     mp[7]="seven";
     mp[8]="eight";
     mp[9]="nine";
-    
-    vector<int>t(26,0);
-    for(int i=0;i<n;i++)
+    vector<int>f(26,0);
+    for(int i =0; i<n;i++)
     {
-        if(s[i]>='A' && s[i]<='Z')
+        if(s[i]>='A'&&s[i]<='Z')
         {
             s[i]=s[i]-'A'+'a';
         }
-        t[s[i]-'a']++;
+        f[s[i]-'a']++;
     }
+    string ans ="";
+    rec(ans,f);
+    sort(ans.begin(),ans.end());
+    reverse(ans.begin(),ans.end());
+    return ans;
     
-    string res=" ";
-    checkR(res,t);
-    sort(res.begin(),res.end());
-    reverse(res.begin(),res.end());
-    return res;
-
+    
 }
-int main()
